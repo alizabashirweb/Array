@@ -1,0 +1,153 @@
+# Array
+#include<iostream>
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a;
+    float b;
+    cout<<sizeof(a)<<endl;
+    cout<<sizeof(b);
+    return  0;
+
+const int SIZE = 5; // Array size
+
+// Function to check if a number is prime
+ prime(int num){
+    if (num <= 1) return false;
+    for (int i = 2; i < num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+// Function to search for a number in the array
+
+ 	int number(int arr[], int target) {
+    for (int i = 0; i < SIZE; i++) {
+        if (arr[i] == target) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Function to sort the array (simple sorting)
+  
+int array(int arr[])
+    for (int i = 0; i < SIZE - 1; i++) {
+        for (int j = i + 1; j < SIZE; j++) {
+            if (arr[i] > arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+// Function to delete a value from the array
+int Value(int arr[], int &size, int value) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == value) {
+            for (int j = i; j < size - 1; j++) {
+                arr[j] = arr[j + 1];
+            }
+            size--; // Reduce array size
+            break;
+        }
+    }
+}
+
+// Function to display the pattern
+int   Pattern() {
+    int nums[SIZE] = {9, 7, 5, 3, 1};
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = i; j < SIZE; j++) {
+            cout << nums[j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+// Function to display numbers divisible by 9
+void displayDivisibleBy9(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 9 == 0) {
+            cout << arr[i] << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[SIZE] = {9, 7, 5, 3, 1}; // Sample array
+    int size = SIZE;
+    int choice, num;
+
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Check if a number is prime\n";
+        cout << "2. Search for a number\n";
+        cout << "3. Sort the array\n";
+        cout << "4. Delete a value\n";
+        cout << "5. Display pattern\n";
+        cout << "6. Show numbers divisible by 9\n";
+        cout << "7. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == 7) {
+            cout << "Exiting program.\n";
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+                cout << "Enter a number: ";
+                cin >> num;
+                if (isPrime(num)) {
+                    cout << num << " is Prime.\n";
+                } else {
+                    cout << num << " is Not Prime.\n"; // Fixed the missing closing quote
+                }
+                break;
+            case 2:
+                cout << "Enter number to search: ";
+                cin >> num;
+                if (searchNumber(arr, num)) {
+                    cout << num << " is Found in the array.\n";
+                } else {
+                    cout << num << " is Not Found.\n";
+                }
+                break;
+            case 3:
+                sortArray(arr);
+                cout << "Array sorted: ";
+                for (int i = 0; i < size; i++) {
+                    cout << arr[i] << " ";
+                }
+                cout << endl;
+                break;
+            case 4:
+                cout << "Enter number to delete: ";
+                cin >> num;
+                deleteValue(arr, size, num);
+                cout << "Updated array: ";
+                for (int i = 0; i < size; i++) {
+                    cout << arr[i] << " ";
+                }
+                cout << endl;
+                break;
+            case 5:
+                displayPattern();
+                break;
+            case 6:
+                displayDivisibleBy9(arr, size);
+                break;
+            default:
+                cout << "Invalid choice! Try again.\n";
+        }
+    }
+
+    return 0;
+}
